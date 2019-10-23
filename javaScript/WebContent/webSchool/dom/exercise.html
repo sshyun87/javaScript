@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p id="show"></p>
+    이름: <input name="fullName" value="name1" type="text"><br>
+    아이디: <input name ="id" value="id1" type="text"><br>
+    비밀번호: <input name="passwd" value="1234" type="password"><br>
+    <button id="btn">확인</button>
+<script>
+var btn = document.getElementById("btn");
+btn.addEventListener("click", callFunc);
+
+var inputs = document.getElementsByTagName("input");
+for (var i=0; i<inputs.lenghth; i++){
+    inputs[i].addEventListener("focus",onFocus);
+    inputs[i].addEventListener("blur",onBlur);
+}
+
+function onFocus(){
+    if(inputs.namedItem("fullName")){
+        inputs[0].style.background="yellow";
+    }else if(inputs.namedItem("inputid")){
+        inputs[1]
+
+    }
+    for(var i=0; inputs.length; i++){
+
+        inputs[i].style.background = "yellow";
+        inputs[i].style.background = "white";
+    }
+}
+</script>    
+</body>
+</html>

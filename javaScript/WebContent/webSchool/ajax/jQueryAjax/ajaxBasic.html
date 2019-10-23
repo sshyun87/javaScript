@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../jquery/jquery.min.js"></script>
+    <script>
+        // xthp.onreadystatechange=function(){
+        //     this.responseText;
+        // }
+        // xhtp.open("get", "EmpServlet");
+        // xhtp.send();
+        $(document).ready(function () {
+            $.ajax({
+                url: "EmpServlet",
+                type: "get",
+                success: function (result) {
+                    var datas = JSON.parse(result);
+                    // console.log(result);
+                    var ul = $("<ul>");
+                    for(var i=0; i<datas.length; i++){
+                        ul.append($("<li>").text(datas[i].firstName));
+                    }
+                    $("#show").html(ul);
+                }
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+    <p id="show"></p>
+
+</body>
+
+</html>

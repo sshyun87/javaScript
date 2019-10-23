@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="loadXML()">Get XML</button>
+    <p id="showXML"></p>
+    <script>
+        function loadXML(){
+            var xhtp = new XMLHttpRequest();
+            xhtp.onreadystatechange = function(){
+                if(this.response == 4 && this.status == 200){
+                    getXML(this);
+                }
+            }
+            xhtp.open("get","cd_catalog.xml");
+            xhtp.send();
+        }
+    var xml = elem.responseXML;
+    var cds = xml.getElementsByTagName("CD");
+    console.log(cds[0]);
+    var fields = cds[0].childNodes.length;
+    var tag = "<tabel border=1>";
+    for(var i = 0; i<cds.length; i++){
+        tag += "<tr>";
+        for (var j=0; j<fields; j++){
+            if(j%2 == 1)
+            tag += "<td>"+cds[i].childNodes[j].
+        }
+    }
+
+</script>
+</body>
+</html>

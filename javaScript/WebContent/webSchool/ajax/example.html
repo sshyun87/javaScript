@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body id="bdy">
+    <button onclick="createTable()">버튼</button><br>
+    Title: <input type="text" id="title" name="Title"><br>
+    Artist: <input type="text" id="artist" name="Artist"><br>
+    Country: <input type="text" id="country" name="Country"><br>
+    Company: <input type="text" id="company" name="Company"><br>
+    Price: <input type="text" id="price" name="Price"><br>
+    Year: <input type="text" id="year" name="Year"><br>
+    <button id="btn">addRow</button>
+
+    <table border=1>
+        <tr><th>Title</th><th>Artist</th><th>Country</th><th>Company</th><th>price</th><th>year</th></tr>
+        <!-- createElement("tr")
+        createElement("td").appendChild(createTextNode())    -->
+    </table>
+    
+    <script>
+        var btn = document.getElementById("btn");
+        btn.addEventListener("click", addData);
+        
+    function addData() {
+                var $table = document.createElement("table");
+                var title = document.getElementById("Title").value;
+                var artist = document.getElementById("Artist").value;
+                var country = document.getElementById("Country").value;
+                var company = document.getElementById("Company").value;
+                var price = document.getElementById("Price").value;
+                var year = document.getElementById("Year").value;
+            
+            var td1 = document.createElement("td");
+            var tdVal1 = document.createTextNode(title);
+            td1.appendChild(tdVal1);
+
+            var td2 = document.createElement("td");
+            var tdVal2 = document.createTextNode(artist);
+            td2.appendChild(tdVal2);
+            
+            var td3 = document.createElement("td");
+            var tdVal3 = document.createTextNode(country);
+            td3.appendChild(tdVal3);
+
+            var td4 = document.createElement("td");
+            var tdVal4 = document.createTextNode(company);
+            td4.appendChild(tdVal4);
+
+            var td5 = document.createElement("td");
+            var tdVal5 = document.createTextNode(price);
+            td5.appendChild(tdVal5);
+
+            var td6 = document.createElement("td");
+            var tdVal6 = document.createTextNode(year);
+            td6.appendChild(tdVal6);
+
+            // var td4 = document.createElement("button");
+            // var tdVal4 = document.createTextNode("Del");
+            // td4.appendChild(tdVal4);
+            // td4.addEventListener("click", delFunc);
+
+            var rows = document.getElementsByTagName("tr");
+            var rowId = rows.length;
+            td7.setAttribute("id", rowId); 
+
+            var tr1 = document.createElement("tr");
+            tr1.setAttribute("id","tr"+rowId);
+            tr1.append(td1,td2,td3,td4,td5,td6);
+            
+            tab = document.getElementById("tbl");
+            tab.append(tr1);
+
+            function showClick(){
+                console.log(this.getAttribute("id"));
+            }
+
+            function createTable(){
+                var table = document.createElement("table");
+                table.setAttribute("id","tbl");
+                table.setAttribute("border", "1");
+
+            var th1 = document.createElement("th");
+            var val1 = document.createTextNode("Title");
+            th1.appendChild(val1);
+
+            var th2 = document.createElement("th");
+            var Val2 = document.createTextNode("Artist");
+            th2.appendChild(Val2);
+            
+            var th3 = document.createElement("th");
+            var Val3 = document.createTextNode("Country");
+            th3.appendChild(Val3);
+
+            var th4 = document.createElement("th");
+            var Val4 = document.createTextNode("Company");
+            th4.appendChild(Val4);
+
+            var th5 = document.createElement("th");
+            var Val5 = document.createTextNode("Price");
+            th5.appendChild(Val5);
+
+            var th6 = document.createElement("th");
+            var Val6 = document.createTextNode("Year");
+            th6.appendChild(Val6);
+
+            }
+        }
+    </script>
+</body>
+</html>
