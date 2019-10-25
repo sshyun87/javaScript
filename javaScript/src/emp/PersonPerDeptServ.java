@@ -2,7 +2,8 @@ package emp;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,39 +12,36 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 
-/**
- * servlet implementation class EmpServlet
- */
-@WebServlet("/webSchool/ajax/jQueryAjax/EmpServlet")
-public class EmpServlet extends HttpServlet {
+@WebServlet("/PersonPerDeptServ")
+public class PersonPerDeptServ extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public EmpServlet() {
+    public PersonPerDeptServ() {
         super();
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//한글 깨질때 UTF-8 로 변경
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
-		
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
-		PrintWriter out = response.getWriter();
+		JSONArray ary = new JSONArray();
+		JSONObject obj = new JSONObject();
 		EmpDAO dao = new EmpDAO();
-		List<Employee> list = dao.getEmpList();
-		out.println(JSONArray.fromObject(list));
+		Map<String, Integer> list = dao.getPersonPerDept();
+		Set<Map.Entry<String, Integer>> set = list.entrySet();
+		for(Map.Entry<String, Integer> map : set) {
+			System.out.println(map.getKey() + map.getValue());//부서명, 인원.
+		
+//			obj = new JSONObject();
+			obj.put("name", map.getKey());
+			obj.put("data", map.getValue());
+			ary.add(obj);
+			
 		}
+		PrintWriter out = response.getWriter();
+		out.print(ary);
+	} 
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
